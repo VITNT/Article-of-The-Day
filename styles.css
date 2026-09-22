@@ -1,0 +1,69 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Geist:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  cursor: url("coffee-bean.png"), default;
+}
+
+body {
+  background-color: #f7eedf;
+}
+
+.hero {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  font-family: "Fraunces", serif;
+  font-size: 36px;
+}
+
+button {
+  margin-top: 32px;
+  margin-bottom: 32px;
+  border: none;
+  background-color: #b1542f;
+  padding: 12px;
+  border-radius: 32px;
+  cursor: pointer;
+  color: white;
+  font-family: "Geist", sans-serif;
+  font-size: 16px;
+  box-shadow: 0px 2px 2px black;
+}
+
+/* article designs */
+
+.article-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: white;
+  width: min(90%, 650px);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.article-container h1 {
+  margin-bottom: 12px;
+  color: #3b2a20;
+}
+
+.article-container p {
+  margin-bottom: 12px;
+  color: #6b5a4d;
+  font-family: "Fraunces", serif;
+}
+
+#article-source {
+  color: #9a8674;
+  font-family: "Geist", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 12px;
+}
