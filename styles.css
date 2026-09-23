@@ -12,29 +12,51 @@ body {
 }
 
 .hero {
-  margin-top: 32px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.hero-top {
+  text-align: center;
 }
 
 h1 {
   font-family: "Fraunces", serif;
   font-size: 36px;
+  color: #3b2a20;
 }
 
 button {
   margin-top: 32px;
   margin-bottom: 32px;
-  border: none;
+  border: 1px solid #8b3e1f;
   background-color: #b1542f;
-  padding: 12px;
-  border-radius: 32px;
+  /* box-shadow: 0 12px 24px -14px rgba(139, 62, 31, 0.7); */
+  padding: 16px;
+  border-radius: 48px;
   cursor: pointer;
   color: white;
   font-family: "Geist", sans-serif;
   font-size: 16px;
-  box-shadow: 0px 2px 2px black;
+  font-weight: 500;
+}
+
+button:hover {
+  background: linear-gradient(180deg, #bc6d4e, #b1542f);
+  transform: translateY(-3%);
+  transition: ease-in-out 0.1s;
+}
+
+button:active {
+  box-shadow: 0px 3px 6px #0006 inset;
+}
+
+.top {
+  display: flex;
+  gap: 8px;
 }
 
 /* article designs */
@@ -44,6 +66,7 @@ button {
   flex-direction: column;
   justify-content: center;
   background-color: white;
+  border: 1px solid #e7d6bd;
   width: min(90%, 650px);
   border-radius: 12px;
   padding: 24px;
@@ -51,7 +74,6 @@ button {
 
 .article-container h1 {
   margin-bottom: 12px;
-  color: #3b2a20;
 }
 
 .article-container p {
@@ -60,10 +82,17 @@ button {
   font-family: "Fraunces", serif;
 }
 
-#article-source {
+#article-source,
+#date {
   color: #9a8674;
   font-family: "Geist", sans-serif;
   text-transform: uppercase;
   letter-spacing: 1.5px;
   font-size: 12px;
+}
+
+#open-article {
+  width: fit-content;
+  margin: 16px 0;
+  padding: 14px;
 }
