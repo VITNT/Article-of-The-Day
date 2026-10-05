@@ -47,4 +47,5 @@ const dateFormat = {
   day: "numeric",
   year: "numeric",
 };
+
 dateText.textContent = date.toLocaleDateString("en-US", dateFormat);
