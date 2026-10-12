@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Geist:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Manrope:wght@200..800&display=swap");
 
 * {
   margin: 0;
@@ -7,8 +7,22 @@
   cursor: url("coffee-bean.png"), default;
 }
 
+:root {
+  --bg: #f5ecde;
+  --white: #fffaf1;
+  --border-light: #e7d6bd;
+
+  --text-dark: #3b2a20;
+  --text-medium: #6b5a4d;
+  --text-light: #9a8674;
+  --underline: #e9b48e;
+
+  --button-dark: #8b3e1f; /* for button border */
+  --button-light: #b1542f;
+}
+
 body {
-  background-color: #f7eedf;
+  background-color: var(--bg);
 }
 
 .hero {
@@ -16,7 +30,10 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  padding: 8rem 2rem;
+  margin: auto;
+  max-width: 650px;
+  gap: 1.75rem;
 }
 
 .hero-top {
@@ -26,31 +43,35 @@ body {
 h1 {
   font-family: "Fraunces", serif;
   font-size: 36px;
-  color: #3b2a20;
+  color: var(--text-dark);
 }
 
+p,
+a,
 button {
-  margin-top: 32px;
-  margin-bottom: 32px;
-  border: 1px solid #8b3e1f;
-  background-color: #b1542f;
-  /* box-shadow: 0 12px 24px -14px rgba(139, 62, 31, 0.7); */
+  font-family: "Manrope", sans-serif;
+}
+
+.normal-btn {
+  margin-top: 1rem;
+  border: 1px solid var(--button-dark);
+  background-color: var(--button-light);
   padding: 16px;
   border-radius: 48px;
   cursor: pointer;
   color: white;
-  font-family: "Geist", sans-serif;
+  font-family: "Manrope", sans-serif;
   font-size: 16px;
   font-weight: 500;
 }
 
-button:hover {
-  background: linear-gradient(180deg, #bc6d4e, #b1542f);
+.normal-btn:hover {
+  background: linear-gradient(180deg, #bc6d4e, var(--button-light));
   transform: translateY(-3%);
   transition: ease-in-out 0.1s;
 }
 
-button:active {
+.normal-btn:active {
   box-shadow: 0px 3px 6px #0006 inset;
 }
 
@@ -59,33 +80,101 @@ button:active {
   gap: 8px;
 }
 
-/* article designs */
+/* Options */
+.options {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 1rem;
+}
 
+.open-options,
+.options p {
+  color: var(--text-medium);
+  text-decoration: underline var(--underline);
+  text-underline-offset: 4px;
+}
+
+.open-options {
+  margin-top: -1rem;
+  margin-bottom: 1rem;
+}
+
+.options p {
+  color: var(--button-dark);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+#category-selector button {
+  color: var(--text-medium);
+  font-weight: 600;
+}
+
+.selector-btn {
+  display: flex;
+  gap: 0.3rem;
+  padding: 0.4rem 0.8rem;
+  background: transparent;
+  border-radius: 99px; /* high px to ensure all divs have rounded corner" */
+  cursor: pointer;
+  color: var(--text-light);
+  border: 1px solid var(--border-light);
+  font-size: 13px;
+  transition: 0.2s ease-in-out;
+}
+
+.selector-btn:hover,
+#category-selector button:hover {
+  color: var(--text-dark);
+  background-color: var(--white);
+}
+
+.selector-btn:active {
+  color: var(--white);
+  background-color: var(--button-dark);
+}
+
+.active {
+  background-color: var(--button-dark);
+  color: var(--white) !important;
+}
+
+/* article designs */
 .article-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: white;
-  border: 1px solid #e7d6bd;
-  width: min(90%, 650px);
+  background-color: var(--white);
+  border: 1px solid var(--border-light);
+  width: 100%;
   border-radius: 12px;
   padding: 24px;
 }
 
 .article-container h1 {
-  margin-bottom: 12px;
+  margin-bottom: 1rem;
 }
 
 .article-container p {
-  margin-bottom: 12px;
-  color: #6b5a4d;
+  margin-bottom: 1rem;
+  color: var(--text-medium);
   font-family: "Fraunces", serif;
 }
 
 #article-source,
 #date {
-  color: #9a8674;
-  font-family: "Geist", sans-serif;
+  color: var(--text-light);
+  font-family: "Manrope", sans-serif;
   text-transform: uppercase;
   letter-spacing: 1.5px;
   font-size: 12px;
@@ -102,4 +191,17 @@ button:active {
 
 #open-source {
   width: fit-content;
+}
+
+/* footer section*/
+.footer {
+  display: flex;
+}
+
+.footer-github {
+  background-color: var(--button-dark);
+  color: var(--bg);
+  border-radius: 80px;
+  padding: 20px;
+  cursor: pointer;
 }

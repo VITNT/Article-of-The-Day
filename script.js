@@ -1,13 +1,14 @@
 var articleTitle = document.querySelector("#article-title");
 var articleSource = document.querySelector("#article-source");
 var articleInfo = document.querySelector("#article-text");
-var url = null;
+var articleUrl = null;
+var sourceUrl = null;
 
-// fetching wikipedia API for articles
-const wikiAPI = "https://en.wikipedia.org/api/rest_v1/page/random/summary";
-
+// fetching backend API for articles
 async function getArticle() {
-  const response = await fetch(wikiAPI);
+  const category = document.querySelector("#category-selector").value;
+  const response = await fetch("/api/article");
+
   if (!response.ok) {
     throw new Error("Error: ${response.status}");
   }
@@ -18,9 +19,10 @@ async function getArticle() {
 
 function renderArticle(article) {
   articleTitle.textContent = article.title;
-  articleInfo.textContent = article.extract;
-  articleSource.textContent = "Wikipedia";
-  url = article.content_urls.desktop.page;
+  articleInfo.textContent = article.text;
+  articleSource.textContent = article.source;
+  articleUrl = article.url;
+  sourceUrl = article.sourceUrl;
 }
 
 async function loadArticle() {
@@ -34,18 +36,37 @@ button.addEventListener("click", loadArticle);
 
 // opening article
 function openArticle() {
-  window.open(url, "_blank");
+  window.open(articleUrl, "_blank");
 }
-openButton = document.querySelector("#open-article");
+
+var openButton = document.querySelector("#open-article");
 openButton.addEventListener("click", openArticle);
 
-// Article date
-var date = new Date();
-var dateText = document.querySelector("#date");
-const dateFormat = {
-  month: "short",
-  day: "numeric",
-  year: "numeric",
-};
+// open source
+function openSource() {
+  window.open(sourceUrl, "_blank");
+}
 
-dateText.textContent = date.toLocaleDateString("en-US", dateFormat);
+var openSourceButton = document.querySelector("#open-source");
+openSourceButton.addEventListener("click", openSource);
+
+// Article date
+function showDate() {
+  var date = new Date();
+  var dateText = document.querySelector("#date");
+  const dateFormat = {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  };
+  dateText.textContent = date.toLocaleDateString("en-US", dateFormat);
+}
+showDate();
+
+// Selecting categories
+var activeSource = document.querySelector(".active");
+
+var openOptions = document.querySelector("#open-options");
+openOptions.addEventListener("click", showOptions);
+
+function showOptions() {}

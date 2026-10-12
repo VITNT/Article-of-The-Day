@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "rss-parser": "^3.13.0"
+  },
+  "devDependencies": {
+    "vercel": "^62.4.0"
+  }
+}

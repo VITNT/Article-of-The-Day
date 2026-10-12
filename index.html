@@ -5,15 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Article of The Day</title>
     <link rel="stylesheet" href="/styles.css" />
-    <link rel="icon" type="image/x-icon" href="favicon.png";
+    <link rel="icon" type="image/x-icon" href="favicon.png" />
   </head>
   <body>
     <div class="hero">
       <div class="hero-top">
-        <h1>An Article a Day keeps the Doctor Away.</h1>
+        <h1>An Article a Day.</h1>
       </div>
-      <button id="article-button">Check Today's Article</button>
-
+      <button class="normal-btn" id="article-button">
+        Check Today's Article
+      </button>
+      <p id="open-options" class="open-options">Not Satisfied?</p>
+      <div class="options">
+        <p>Shuffle A New Pick</p>
+        <div id="category-selector" class="categories">
+          <button class="selector-btn active">All</button>
+          <button class="selector-btn">General</button>
+          <button class="selector-btn">Tech</button>
+          <button class="selector-btn">Science</button>
+          <button class="selector-btn">History</button>
+          <button class="selector-btn">Sports</button>
+          <button class="selector-btn">Economics</button>
+        </div>
+        <div id="source-selector" class="categories">
+          <button class="selector-btn active">Any Source</button>
+          <button class="selector-btn">The Guardian</button>
+          <button class="selector-btn">The Atlantic</button>
+          <button class="selector-btn">Smithsonian Magazine</button>
+          <button class="selector-btn">Science Daily</button>
+          <button class="selector-btn">Time</button>
+          <button class="selector-btn">Scientific American</button>
+          <button class="selector-btn">MIT Technology Review</button>
+          <button class="selector-btn">The Verge</button>
+          <button class="selector-btn">Wired</button>
+          <button class="selector-btn">TechCrunch</button>
+        </div>
+      </div>
       <div class="article-container">
         <div class="top">
           <p id="article-source"></p>
@@ -22,13 +49,20 @@
         <h1 id="article-title"></h1>
         <p id="article-text"></p>
         <div class="open-buttons">
-          <button id="open-article">Open Article</button>
-          <button id="open-source">Open Source</button>
+          <button class="normal-btn" id="open-article">Open Article</button>
+          <button class="normal-btn" id="open-source">Open Source</button>
         </div>
       </div>
     </div>
-    <div class="footer">Github</div>
+    <div class="footer">
+      <a
+        class="footer-github"
+        href="https://github.com/VITNT/Article-of-The-Day"
+        target="_blank"
+      >
+        Github
+      </a>
+    </div>
     <script src="./script.js"></script>
-    <script src="./api/article.js"></script>
   </body>
 </html>
