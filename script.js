@@ -1,16 +1,23 @@
-var articleTitle = document.querySelector("#article-title");
-var articleSource = document.querySelector("#article-source");
-var articleInfo = document.querySelector("#article-text");
-var articleUrl = null;
-var sourceUrl = null;
+let articleTitle = document.querySelector("#article-title");
+let articleSource = document.querySelector("#article-source");
+let articleInfo = document.querySelector("#article-text");
+let articleUrl = null;
+let sourceUrl = null;
 
-// fetching backend API for articles
+// fetching backend for articles
 async function getArticle() {
-  const category = document.querySelector("#category-selector").value;
-  const response = await fetch("/api/article");
+  const categories = [];
+  const buttons = document.querySelectorAll("#category-selector .active");
+  buttons.forEach((button) => {
+    categories.push(button.dataset.category);
+  });
+
+  const response = await fetch(
+    `/api/article?categories=${categories.join(",")}`,
+  );
 
   if (!response.ok) {
-    throw new Error("Error: ${response.status}");
+    throw new Error(`Error: ${response.status}`);
   }
 
   const article = await response.json();
@@ -20,7 +27,7 @@ async function getArticle() {
 function renderArticle(article) {
   articleTitle.textContent = article.title;
   articleInfo.textContent = article.text;
-  articleSource.textContent = article.source;
+  articleSource.textContent = article.source + " -";
   articleUrl = article.url;
   sourceUrl = article.sourceUrl;
 }
@@ -35,25 +42,23 @@ button = document.querySelector("#article-button");
 button.addEventListener("click", loadArticle);
 
 // opening article
+let openButton = document.querySelector("#open-article");
+openButton.addEventListener("click", openArticle);
 function openArticle() {
   window.open(articleUrl, "_blank");
 }
 
-var openButton = document.querySelector("#open-article");
-openButton.addEventListener("click", openArticle);
-
 // open source
+let openSourceButton = document.querySelector("#open-source");
+openSourceButton.addEventListener("click", openSource);
 function openSource() {
   window.open(sourceUrl, "_blank");
 }
 
-var openSourceButton = document.querySelector("#open-source");
-openSourceButton.addEventListener("click", openSource);
-
 // Article date
 function showDate() {
-  var date = new Date();
-  var dateText = document.querySelector("#date");
+  let date = new Date();
+  let dateText = document.querySelector("#date");
   const dateFormat = {
     month: "short",
     day: "numeric",
@@ -64,9 +69,36 @@ function showDate() {
 showDate();
 
 // Selecting categories
-var activeSource = document.querySelector(".active");
+let openOptions = document.querySelector("#open-options");
+let options = document.querySelector("#options");
+let categoryButtons = document.querySelectorAll("#category-selector button");
 
-var openOptions = document.querySelector("#open-options");
+options.style.display = "none";
+
 openOptions.addEventListener("click", showOptions);
+function showOptions() {
+  if (openOptions.textContent === "Hide Options") {
+    options.style.display = "none";
+    openOptions.textContent = "Not Satisfied?";
+  } else {
+    options.style.display = "flex";
+    openOptions.textContent = "Hide Options";
+  }
+}
 
-function showOptions() {}
+categoryButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    let allButton = document.querySelector('[data-category="all"]');
+    if (button === allButton) {
+      categoryButtons.forEach((button) => button.classList.remove("active"));
+      allButton.classList.add("active");
+    } else {
+      // toggle instead of add so I can remove .active class when I click again
+      button.classList.toggle("active");
+      allButton.classList.remove("active");
+      if (!document.querySelector("#category-selector .active")) {
+        allButton.classList.add("active");
+      }
+    }
+  });
+});
