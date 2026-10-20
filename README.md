@@ -2,6 +2,8 @@
 
 # Article of The Day
 
+[AOTD](https://article.visott.com)
+
 ![Site Image](./images/demo-img.png)
 
 [![HTML](https://img.shields.io/badge/HTML-%23E34F26.svg?logo=html5&logoColor=white)](#)
@@ -10,11 +12,11 @@
 
 </div>
 
-## About
+---
 
-- Read one article a day.
-- Improve your reading skills!
-- Keep up with the news.
+AOTD is a random article generator. It utilizes RSS Feeds to select an article each day. But, if you don't like the article you get, you can always re-roll! Read one article a day. Improve your reading skills!
+
+AOTD is inspired by other daily sites like Word of the Day.
 
 ## Features
 
@@ -25,9 +27,7 @@
 
 ## Tech Stack
 
-- HTML
-- CSS
-- JS (rss-parser)
+AOTD (Aritcle of the Day) uses vanilla HTML, CSS, and Javascript. It uses the RSS Parser library in Javascript which extracts the title and description of articles from different sources.
 
 ## Architecture
 
@@ -49,10 +49,12 @@
 
 ## Getting Started
 
-- Clone the demo: `git clone https://github.com/VITNT/Article-of-The-Day.git`
-- Install rss-parser and other dependencies: `npm install`
-- Start the local dev server: `npx vercel dev`
-- Open the website at `http://localhost:3000`
+1. Clone the demo: `git clone https://github.com/VITNT/Article-of-The-Day.git`
+2. Install rss-parser and other dependencies: `npm install`
+3. Start the local dev server: `npx vercel dev`
+4. Open the website at `http://localhost:3000`
+
+AOTD is hosted using vercel.
 
 ## Demo
 
